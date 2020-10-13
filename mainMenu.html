@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Welcome</title>
+  </head>
+  <body>
+	<form>
+		<label for="name">Name:</label>
+		<input type = "text" id="name" name="name"><br><br>
+		<button type = "button" onClick="getValue()" label="submit">Submit</button>
+	</form>
+	<script>
+			var inputVal;
+			function getValue(){
+			inputVal = document.getElementById("name").value;
+			localStorage.setItem("name",inputVal);
+			window.location.replace("client.html");
+			}
+	</script>
+  </body>
+</html>
