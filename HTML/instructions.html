@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Instructions</title>
+	<style>
+		#instructions{
+			text-align: center;
+			border: 2px solid;
+			border-radius: 10px;
+			margin-left: 15%;
+			margin-right: 15%;
+			font-family: Arial, Helvetica, sans-serif;
+			background-color: #bcebad;
+		}
+		#button {
+			text-align: center;
+		}
+		#title {
+            font-size: 50px;
+            padding-top: 50px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+		.button {
+            background-color: #50b92d;
+            color: white;
+            padding: 15px 40px;
+            text-align: center;
+            display: inline-block;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+        }
+		
+		.button:hover {
+            background-color: #48a628;
+        }
+		
+		ul {
+			font-size: 15px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+			list-style-position: inside;
+		}
+	</style>
+  </head>
+  <body>
+	<div id="title">How To Play The Game of Life: College Edition</div><br><br>
+	<div id="instructions">
+		<h3>Setup<h3>
+		<ul>
+			<li>Type your name into the box & select the color of your choice.</li>
+			<li>Click 'Continue' to begin the game!</li>
+		</ul> 
+	</div><br><br>
+	<div id="instructions">
+		<h3>Playing The Game<h3>
+	</div><br><br>
+	<div id="instructions">
+		<h3>How To Win<h3>
+	</div><br><br>
+	<div id="button">
+		<button type="button" class="button" onClick="getMainMenu()" label="goToMain">Go Back</button>
+	</div>
+	<script>
+		function getMainMenu(){
+			window.location.replace("mainMenu.html");
+		}
+	</script>
+  </body>
+</html>

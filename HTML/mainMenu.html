@@ -1,19 +1,90 @@
 <html>
   <head>
-    <title>Welcome</title>
+    <title>Main Menu</title>
+	<style>
+		.button {
+            background-color: #50b92d;
+            color: white;
+            padding: 15px 40px;
+            text-align: center;
+            display: inline-block;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+        }
+		
+		.button:hover {
+            background-color: #48a628;
+        }
+		
+		#button {
+			text-align: center;
+		}
+
+        label {
+            text-align: center;
+            font-size: 30px;
+			font-family: Arial, Helvetica, sans-serif;
+        }
+		
+		#name {
+            text-align: center;
+            font-size: 20px;
+			font-family: Arial, Helvetica, sans-serif;
+			border-radius: 4px;
+        }
+		#color {
+            text-align: center;
+            font-size: 20px;
+			font-family: Arial, Helvetica, sans-serif;
+			border-radius: 4px;
+
+        }
+		div {
+			text-align: center;
+			margin-top: 30px;
+		}
+
+		
+	</style>
   </head>
   <body>
 	<form>
+		<div>
 		<label for="name">Name:</label>
-		<input type = "text" id="name" name="name"><br><br>
-		<button type = "button" onClick="getValue()" label="submit">Submit</button>
+		<input type="text" id="name" name="name"><br><br>
+				
+		<label for="color">Select your color:</label>
+		<select id="color" name="color">
+			<option value="red">Red</option>
+			<option value="orange">Orange</option>
+			<option value="yellow">Yellow</option>
+			<option value="green">Green</option>
+			<option value="blue">Blue</option>
+			<option value="purple">Purple</option>
+		</select><br><br>	
+		</div><br><br>
+		<div id="button">
+		<button type="button" class="button" onClick="getInstructions()" label="instructions">How To Play</button>
+		<button type="button" class="button" onClick="getValue()" label="submit">Continue</button>
+		</div>
+
 	</form>
 	<script>
-			var inputVal;
+			var inputName;
+			var inputColor;
+			
+			function getInstructions(){
+				window.location.replace("instructions.html");
+			}
+			
 			function getValue(){
-			inputVal = document.getElementById("name").value;
-			localStorage.setItem("name",inputVal);
-			window.location.replace("client.html");
+				inputName = document.getElementById("name").value;
+				localStorage.setItem("name",inputName);
+				inputColor = document.getElementById("color").value;
+				localStorage.setItem("color", inputColor);
+				window.location.replace("client.html");
 			}
 	</script>
   </body>

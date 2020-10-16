@@ -1,4 +1,5 @@
 var name = localStorage.getItem("name");
+var color = localStorage.getItem("color");
 var socket = io.connect();
 socket.on('message', function(data) {
   console.log(data);
@@ -63,7 +64,7 @@ socket.on('state', function(players) {
   context.clearRect(0, 0, 800, 600);
   for (var id in players) {
     var player = players[id];
-	context.fillStyle = 'green';
+	context.fillStyle = color;
     context.beginPath();
     context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
     context.fill();
