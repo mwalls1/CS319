@@ -1,6 +1,10 @@
 var name = localStorage.getItem("name");
 var color = localStorage.getItem("color");
 var socket = io.connect();
+var pData = {
+	pName: name,
+	pColor: color
+}
 socket.on('message', function(data) {
   console.log(data);
 });
@@ -52,7 +56,7 @@ document.addEventListener('keyup',function(key){
 	}
 });
 
-socket.emit('new player', name);
+socket.emit('new player', pData);
 setInterval(function() {
   socket.emit('move', move);
 }, 1000/60);
@@ -64,7 +68,7 @@ socket.on('state', function(players) {
   context.clearRect(0, 0, 800, 600);
   for (var id in players) {
     var player = players[id];
-	context.fillStyle = color;
+	context.fillStyle = player.color;
     context.beginPath();
     context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
     context.fill();

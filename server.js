@@ -36,8 +36,9 @@ io.on('connection', function(socket) {
       x: 300,
 	  y: 300,
 	  num: numPlayers,
-	  name: data,
-	  isTurn: temp
+	  name: data.pName,
+	  isTurn: temp,
+	  color: data.pColor
     };
   });
   socket.on('disconnect', function() {
