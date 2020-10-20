@@ -50,6 +50,9 @@
 	</style>
   </head>
   <body>
+	<div>
+        <button type="button" class="button" onClick="back()" label="back">Back</button>
+    </div>
 	<form>
 		<div>
 		<label for="name">Name:</label>
@@ -86,6 +89,10 @@
 				localStorage.setItem("color", inputColor);
 				window.location.replace("client.html");
 			}
+
+			function back(){
+			window.location.replace("../index.html");
+		}
 	</script>
   </body>
 </html>
