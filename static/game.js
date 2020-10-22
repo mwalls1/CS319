@@ -1,6 +1,5 @@
 var name = localStorage.getItem("name");
 var color = localStorage.getItem("color");
-document.getElementById("name").innerHTML = ""+name;
 var socket = io.connect();
 var pData = {
 	pName: name,
@@ -67,6 +66,9 @@ setInterval(function() {
 socket.on('state', function(players) {
   /*for (var id in players) {
   }*/
+});
+socket.on("name", function(name){
+	document.getElementById("name").innerHTML = name;
 });
 var index = 1;
 socket.on('list', function(players) {

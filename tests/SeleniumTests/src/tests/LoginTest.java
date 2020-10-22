@@ -22,7 +22,6 @@ public class LoginTest {
 
 	String txtUsername="name";
 	String btnClient="btnClient";
-	String txtMessageLogin="name";
 	String testName = "Mason";
 
 	@BeforeClass
@@ -49,7 +48,7 @@ public class LoginTest {
 		
 		driver.get(pathClientPage);
 		driver.manage().window().maximize();
-		String strName=driver.findElement(By.id(txtMessageLogin)).getText();
+		String strName=driver.findElement(By.id(txtUsername)).getText();
 		assertEquals("Failed test case", strName, testName);
 	}
 
@@ -64,7 +63,7 @@ public class LoginTest {
 		
 		driver.get(pathClientPage);
 		driver.manage().window().maximize();
-		String strName=driver.findElement(By.id(txtMessageLogin)).getText();
+		String strName=driver.findElement(By.id(txtUsername)).getText();
 		assertNotEquals("Failed test case", strName, testName);
 	}
 

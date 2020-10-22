@@ -37,6 +37,8 @@ io.on('connection', function(socket) {
 	  isTurn: temp,
 	  color: data.pColor
     };
+	var name = data.pName;
+   io.to(socket.id).emit('name', name);
   });
   socket.on('disconnect', function() {
 	  numPlayers--;
