@@ -1,6 +1,6 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,8 +21,9 @@ public class LoginTest {
 	static String pathClientPage="http://localhost:5000/HTML/client.html";
 
 	String txtUsername="name";
-	String btnLogin="btnClient";
+	String btnClient="btnClient";
 	String txtMessageLogin="name";
+	String testName = "Mason";
 
 	@BeforeClass
 	public static void openBrowser()
@@ -38,32 +39,34 @@ public class LoginTest {
 	}
 
 	@Test
-	public void loginSuccessTest() throws InterruptedException {
+	public void nameLoadingSuccess() throws InterruptedException {
 		driver.get(pathLoginPage);
 		driver.manage().window().maximize();
-		driver.findElement(By.xpath("//input[@id='"+txtUsername+"']")).sendKeys("coms319");
+		driver.findElement(By.id(txtUsername)).sendKeys(testName);
 
-		Thread.sleep(1000);
-		driver.findElement(By.xpath("//input[@id='"+btnLogin+"']")).click();
+		Thread.sleep(500);
+		driver.findElement(By.id(btnClient)).click();
 		
 		driver.get(pathClientPage);
 		driver.manage().window().maximize();
-		String strName=driver.findElement(By.xpath("//label[@id='"+txtMessageLogin+"']")).getText();
-		assertEquals("Failed test case", strName, "coms319");
+		String strName=driver.findElement(By.id(txtMessageLogin)).getText();
+		assertEquals("Failed test case", strName, testName);
 	}
 
-	/*@Test
-	public void loginFailedTest() throws InterruptedException {
+	@Test
+	public void nameLoadingFailed() throws InterruptedException {
 		driver.get(pathLoginPage);
 		driver.manage().window().maximize();
-		driver.findElement(By.id(txtUsername)).sendKeys("test");
-		driver.findElement(By.id(txtPassword)).sendKeys("lab10");
+		driver.findElement(By.id(txtUsername)).sendKeys("Matt");
 
-		Thread.sleep(1000);
-		driver.findElement(By.id(btnLogin)).click();
-		String strMessage=driver.findElement(By.xpath("//label[@id='"+txtMessageLogin+"']")).getText();
-		assertEquals("Failed test case", strMessage, "Login Failed!");
-	}*/
+		Thread.sleep(500);
+		driver.findElement(By.id(btnClient)).click();
+		
+		driver.get(pathClientPage);
+		driver.manage().window().maximize();
+		String strName=driver.findElement(By.id(txtMessageLogin)).getText();
+		assertNotEquals("Failed test case", strName, testName);
+	}
 
 
 
