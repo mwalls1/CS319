@@ -60,12 +60,16 @@ socket.emit('new player', pData);
 setInterval(function() {
   socket.emit('move', move);
 }, 1000/60);
-var canvas = document.getElementById('canvas');
-canvas.width = 800;
-canvas.height = 600;
-var context = canvas.getContext('2d');
+//var canvas = document.getElementById('canvas');
+//canvas.width = 800;
+//canvas.height = 600;
+//var context = canvas.getContext('2d');
 socket.on('state', function(players) {
-  context.clearRect(0, 0, 800, 600);
+	for (var id in players) {
+		var player = players[id];
+		console.log(player.name);
+	}
+  /*context.clearRect(0, 0, 800, 600);
   for (var id in players) {
     var player = players[id];
 	context.fillStyle = player.color;
@@ -78,5 +82,5 @@ socket.on('state', function(players) {
 	{
 		context.fillText(player.name+"'s turn", 10,590);
 	}
-  }
+  }*/
 });
