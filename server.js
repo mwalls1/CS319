@@ -15,14 +15,12 @@ app.get('/', function(request, response) {
 });
 // Starts the server.
 
-// Add the WebSocket handlers
-io.on('connection', function(socket) {
-});
 
 var players = {};
 io.on('connection', function(socket) {
   socket.on('new player', function(data) {
 	numPlayers++;
+	console.log('New player connected. Num Players:'+numPlayers);
 	var temp;
 	if(numPlayers==pTurn)
 	{
@@ -35,7 +33,6 @@ io.on('connection', function(socket) {
     players[socket.id] = {
       x: 300,
 	  y: 300,
-	  num: numPlayers,
 	  name: data.pName,
 	  isTurn: temp,
 	  color: data.pColor
@@ -43,6 +40,7 @@ io.on('connection', function(socket) {
   });
   socket.on('disconnect', function() {
 	  numPlayers--;
+	  console.log('Player Disconnected. Num Players:'+numPlayers);
 	delete players[socket.id];
   });
   socket.on('move', function(data) {
@@ -83,8 +81,11 @@ io.on('connection', function(socket) {
   });
 });
 setInterval(function() {
-  io.sockets.emit('state', players);
-}, 1000 / 60);
+  io.sockets.emit('list', players);
+  io.sockets.emit('numPlayers', numPlayers);
+  if(numPlayers == 2)
+	io.sockets.emit('start');
+}, 1000);
 server.listen(app.get('port'), function() {
   console.log('Starting server on port 5000');
 });

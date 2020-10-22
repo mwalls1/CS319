@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Main Menu</title>
+	<style>
+        label {
+            text-align: center;
+            font-size: 30px;
+			font-family: Arial, Helvetica, sans-serif;
+        }
+		
+		#name {
+            text-align: center;
+            font-size: 20px;
+			font-family: Arial, Helvetica, sans-serif;
+			border-radius: 4px;
+        }
+		#color {
+            text-align: center;
+            font-size: 20px;
+			font-family: Arial, Helvetica, sans-serif;
+			border-radius: 4px;
+
+        }
+		div {
+			text-align: center;
+			margin-top: 30px;
+		}
+
+		
+	</style>
+  </head>
+  <body>
+		<div>
+		<label for="players">Players:</label>
+		</div><br><br>
+		<div>
+			<ul>
+				<li id="1" label="Open" value="Open">Open</li>
+				<li id="2" label="Open" value="Open">Open</li>
+				<li id="3" label="Open" value="Open">Open</li>
+				<li id="4" label="Open" value="Open">Open</li>
+			</ul>
+		</div>
+		<div id="button">
+		<button type="button" class="button" onClick="back()" label="back">Back</button>
+		</div>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/static/lobby.js"></script>
+  </body>
+</html>

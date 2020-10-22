@@ -64,13 +64,10 @@
 			<option value="blue">Blue</option>
 			<option value="purple">Purple</option>
 		</select><br><br>	
-		</div><br><br>
-		<div id="button">
 		<button type="button" class="button" onClick="back()" label="back">Back</button>
 		<button type="button" class="button" onClick="getInstructions()" label="instructions">How To Play</button>
-		<button type="button" class="button" onClick="getValue()" label="submit">Continue</button>
-		</div>
-
+		<button type="button" class="button" onClick="getValue()" label="submit" id="btnClient" name="btnClient">Continue</button>
+		</div><br><br>
 	</form>
 	<script>
 			var inputName;
@@ -85,7 +82,7 @@
 				localStorage.setItem("name",inputName);
 				inputColor = document.getElementById("color").value;
 				localStorage.setItem("color", inputColor);
-				window.location.replace("board3.html");
+				window.location.replace("client.html");
 			}
 
 			function back(){

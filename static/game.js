@@ -1,5 +1,6 @@
 var name = localStorage.getItem("name");
 var color = localStorage.getItem("color");
+document.getElementById("name").innerHTML = ""+name;
 var socket = io.connect();
 var pData = {
 	pName: name,
@@ -56,27 +57,39 @@ document.addEventListener('keyup',function(key){
 	}
 });
 
+
+
+
 socket.emit('new player', pData);
 setInterval(function() {
   socket.emit('move', move);
 }, 1000/60);
-var canvas = document.getElementById('canvas');
-canvas.width = 800;
-canvas.height = 600;
-var context = canvas.getContext('2d');
 socket.on('state', function(players) {
-  context.clearRect(0, 0, 800, 600);
-  for (var id in players) {
-    var player = players[id];
-	context.fillStyle = player.color;
-    context.beginPath();
-    context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
-    context.fill();
-	 context.fillStyle = 'black';
-	context.fillText(player.name, player.x-15, player.y+20);
-	if(player.isTurn)
-	{
-		context.fillText(player.name+"'s turn", 10,590);
-	}
-  }
+  /*for (var id in players) {
+  }*/
+});
+var index = 1;
+socket.on('list', function(players) {
+	socket.on('numPlayers', function(numPlayers) {
+		for(var id in players)
+		{
+			document.getElementById(index+"").innerHTML = ""+players[id].name;
+			if(index == numPlayers)
+			{
+				if(numPlayers < 4)
+				{
+					var i = index+1;
+					for(i; i <= 4; i++)
+					{
+						document.getElementById(i+"").innerHTML = "Open";
+					}
+				}
+				index = 1;
+			}
+			else
+			{
+				index++;
+			}
+		}
+	});
 });
