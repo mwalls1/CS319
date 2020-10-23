@@ -23,6 +23,7 @@ var players = {};
 io.on('connection', function(socket) {
   socket.on('new player', function(data) {
 	numPlayers++;
+	console.log('New player connected. Num Players:'+numPlayers);
 	var temp;
 	if(numPlayers==pTurn)
 	{
@@ -43,6 +44,7 @@ io.on('connection', function(socket) {
   });
   socket.on('disconnect', function() {
 	  numPlayers--;
+	  console.log('Player Disconnected. Num Players:'+numPlayers);
 	delete players[socket.id];
   });
   socket.on('move', function(data) {

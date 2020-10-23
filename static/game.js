@@ -65,6 +65,7 @@ setInterval(function() {
 //canvas.height = 600;
 //var context = canvas.getContext('2d');
 socket.on('state', function(players) {
+	console.clear();
 	for (var id in players) {
 		var player = players[id];
 		console.log(player.name);
