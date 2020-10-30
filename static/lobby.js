@@ -18,28 +18,19 @@ socket.on('start', function(){
 	window.location.href="board3.html";
 });
 socket.on('list', function(players) {
-	socket.on('numPlayers', function(numPlayers) {
-		for(var id in players)
+	for(var id in players)
+	{
+		document.getElementById(index+"").innerHTML = ""+players[id].name;
+		index++;
+	}
+	if(index<5)
+	{
+		for(index; index<5; index++)
 		{
-			document.getElementById(index+"").innerHTML = ""+players[id].name;
-			if(index == numPlayers)
-			{
-				if(numPlayers < 4)
-				{
-					var i = index+1;
-					for(i; i <= 4; i++)
-					{
-						document.getElementById(i+"").innerHTML = "Open";
-					}
-				}
-				index = 1;
-			}
-			else
-			{
-				index++;
-			}
+			document.getElementById(index+"").innerHTML = "Open";
 		}
-	});
+	}
+	index = 1;
 });
 
 

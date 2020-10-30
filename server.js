@@ -8,6 +8,7 @@ var app = express();
 app.set('port', process.env.PORT || 5000);
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
+var gameStarted = false;
 app.use(express.static(__dirname));
 // Routing
 app.get('/', function(request, response) {
@@ -84,9 +85,11 @@ io.on('connection', function(socket) {
 });
 setInterval(function() {
   io.sockets.emit('list', players);
-  io.sockets.emit('numPlayers', numPlayers);
-  if(numPlayers == 2)
+  if(numPlayers == 2 && !gameStarted)
+  {
+	gameStarted = true;
 	io.sockets.emit('start');
+  }
 }, 1000);
 server.listen(app.get('port'), function() {
   console.log('Starting server on port 5000');
