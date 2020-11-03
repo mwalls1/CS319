@@ -36,9 +36,9 @@ socket.emit('new player', pData);
 function spin() {
 		socket.emit('spin');
 }
-setInterval(function() {
+/*setInterval(function() {
   socket.emit('move', move);
-}, 1000/60);
+}, 1000/60);*/
 //var canvas = document.getElementById('canvas');
 //canvas.width = 800;
 //canvas.height = 600;
@@ -82,9 +82,9 @@ socket.on('list', function(players) {
 		document.getElementById(index+"").innerHTML = ""+players[id].name+". Current Space: "+players[id].curSpot;
 		if(players[id].isTurn)
 		{
-			var temp2 = new Image(15,15);
+			var temp2 = new Image(5,5);
 			temp2.src = '../images/ready.png';
-			document.getElementById(index+"").appendChild(temp2);
+			document.getElementById("turn").innerHTML=players[id].name+"'s turn";
 		}
 		index++;
 	}
