@@ -40,7 +40,9 @@ io.on('connection', function(socket) {
 	  color: data.pColor,
 	  isReady: false,
 	  num: numPlayers,
-	  curSpot: 0
+	  curSpot: 0, 
+	  hasSpun: false,
+	  score: 0
     };
 	var name = data.pName;
    io.to(socket.id).emit('name', name);
@@ -55,9 +57,10 @@ io.on('connection', function(socket) {
   });
   socket.on('turnOver', function (){
 	   var player = players[socket.id] || {};
-	   if(player.isTurn)
+	   if(player.isTurn && player.hasSpun)
 	   {
 			player.isTurn = false;
+			player.hasSpun = false;
 			if(pTurn >= numPlayers)
 			{
 				pTurn = 1;
@@ -76,15 +79,22 @@ io.on('connection', function(socket) {
   });
   socket.on('spin', function() {
     var player = players[socket.id] || {};
-	if(player.isTurn)
+	if(player.isTurn && !player.hasSpun)
 	{
+		player.hasSpun = true;
 		var spinVal = Math.floor((Math.random() * 4) + 1);
 		player.curSpot += spinVal;
 		var tempVal = player.name+" spun a "+spinVal;
 		io.sockets.emit('spinVal', tempVal);
+		//yellowSpaces();
 	}
   });
 });
+function yellowSpaces(){
+	//Do stuff here
+	
+	io.sockets.emit('yellowSpace', /*some type of value*/);
+}
 setInterval(function() {
   io.sockets.emit('state', players);
   io.sockets.emit('list', players);

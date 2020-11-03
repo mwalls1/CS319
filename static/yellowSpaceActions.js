@@ -1,9 +1,22 @@
 //NEW SEMESTER/YEAR
+var spaces = {};
+
 //Choose a major!
 if (player.location == 1){ 
 	player.points += player.major.points;
 	alert ("You chose your major! Your major is " + player.major + ". +" + player.major.points);
 }
+var temp = {
+	points: 10,
+	string: "You afunboasbfoilabfo"
+}
+spaces[1] = temp;
+
+
+
+alert(player.name+" "+spaces[player.curSpot].string);
+
+
 //Sophmore Year
 else if (player.location == 11){ 
 	player.points += player.major.points;

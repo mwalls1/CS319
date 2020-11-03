@@ -67,11 +67,25 @@ socket.on('state', function(players) {
 socket.on('spinVal', function(tempVal) {
 	window.alert(tempVal);
 });
+
+
+socket.on('yellowSpace', function(/*the value*/) {
+	//Do more stuff
+	window.alert(/*something*/);
+});
+
+
 var index = 1;
 socket.on('list', function(players) {
 	for(var id in players)
 	{
-		document.getElementById(index+"").innerHTML = ""+players[id].name;
+		document.getElementById(index+"").innerHTML = ""+players[id].name+". Current Space: "+players[id].curSpot;
+		if(players[id].isTurn)
+		{
+			var temp2 = new Image(15,15);
+			temp2.src = '../images/ready.png';
+			document.getElementById(index+"").appendChild(temp2);
+		}
 		index++;
 	}
 	if(index<5)
