@@ -63,7 +63,6 @@ socket.emit('new player', pData);
 setInterval(function() {
   socket.emit('move', move);
 }, 1000/60);
-<<<<<<< HEAD
 //var canvas = document.getElementById('canvas');
 //canvas.width = 800;
 //canvas.height = 600;
@@ -97,16 +96,11 @@ socket.on('list', function(players) {
 		index++;
 	}
 	if(index<5)
->>>>>>> origin/masonsBranch
 	{
 		for(index; index<5; index++)
 		{
 			document.getElementById(index+"").innerHTML = "Open";
 		}
 	}
-<<<<<<< HEAD
-  }*/
-=======
 	index = 1;
->>>>>>> origin/masonsBranch
 });

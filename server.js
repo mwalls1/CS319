@@ -90,10 +90,7 @@ io.on('connection', function(socket) {
   });
 });
 setInterval(function() {
-<<<<<<< HEAD
   io.sockets.emit('state', players);
-}, 5000);
-=======
   io.sockets.emit('list', players);
   gStart = true;
   for(var id in players)
@@ -109,7 +106,6 @@ setInterval(function() {
   }
   
 }, 1000);
->>>>>>> origin/masonsBranch
 server.listen(app.get('port'), function() {
   console.log('Starting server on port 5000');
 });
