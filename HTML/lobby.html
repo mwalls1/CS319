@@ -34,15 +34,22 @@
 		<label for="players">Players:</label>
 		</div><br><br>
 		<div>
-			<ul>
-				<li id="1" label="Open" value="Open">Open</li>
-				<li id="2" label="Open" value="Open">Open</li>
-				<li id="3" label="Open" value="Open">Open</li>
-				<li id="4" label="Open" value="Open">Open</li>
-			</ul>
+			<p id="1">
+				<label for="1">Open</label>
+			</p>
+			<p id="2">
+				<label for="2">Open</label>
+			</p>
+			<p id="3">
+				<label for="3">Open</label>
+			</p>
+			<p id="4">
+				<label for="4">Open</label>
+			</p>
 		</div>
 		<div id="button">
 		<button type="button" class="button" onClick="back()" label="back">Back</button>
+		<button type="button" class="button" onClick="readyCheck()" label="ready">Ready</button>
 		</div>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/static/lobby.js"></script>

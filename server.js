@@ -8,6 +8,7 @@ var app = express();
 app.set('port', process.env.PORT || 5000);
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
+var gStart = true;
 var gameStarted = false;
 app.use(express.static(__dirname));
 // Routing
@@ -36,7 +37,9 @@ io.on('connection', function(socket) {
 	  y: 300,
 	  name: data.pName,
 	  isTurn: temp,
-	  color: data.pColor
+	  color: data.pColor,
+	  isReady: false,
+	  num: numPlayers
     };
 	var name = data.pName;
    io.to(socket.id).emit('name', name);
@@ -45,6 +48,9 @@ io.on('connection', function(socket) {
 	  numPlayers--;
 	  console.log('Player Disconnected. Num Players:'+numPlayers);
 	delete players[socket.id];
+  });
+  socket.on('ready', function(data) {
+	  players[socket.id].isReady = data;
   });
   socket.on('move', function(data) {
     var player = players[socket.id] || {};
@@ -85,11 +91,19 @@ io.on('connection', function(socket) {
 });
 setInterval(function() {
   io.sockets.emit('list', players);
-  if(numPlayers == 2 && !gameStarted)
+  gStart = true;
+  for(var id in players)
   {
-	gameStarted = true;
-	io.sockets.emit('start');
+	  if(!players[id].isReady)
+	  {
+		  gStart = false;
+	  }
   }
+  if(!gameStarted && gStart && numPlayers > 0)
+  {
+	  io.sockets.emit('start');
+  }
+  
 }, 1000);
 server.listen(app.get('port'), function() {
   console.log('Starting server on port 5000');
