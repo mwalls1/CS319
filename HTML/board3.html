@@ -361,12 +361,20 @@ img{
 		<td></td>
 	</tr>
 </table>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/static/game.js"></script>
 <script>
 	function spin() {
 		window.alert("You spun a " + Math.floor((Math.random() * 4) + 1) + "!");
 	}
 </script>
+<div>
+	<ul>
+		<li id="1" label="Open" value="Open">Open</li>
+		<li id="2" label="Open" value="Open">Open</li>
+		<li id="3" label="Open" value="Open">Open</li>
+		<li id="4" label="Open" value="Open">Open</li>
+	</ul>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/static/game.js"></script>
 </body>
 </html>

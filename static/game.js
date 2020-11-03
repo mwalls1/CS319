@@ -56,10 +56,14 @@ document.addEventListener('keyup',function(key){
 	}
 });
 
+
+
+
 socket.emit('new player', pData);
 setInterval(function() {
   socket.emit('move', move);
 }, 1000/60);
+<<<<<<< HEAD
 //var canvas = document.getElementById('canvas');
 //canvas.width = 800;
 //canvas.height = 600;
@@ -80,8 +84,29 @@ socket.on('state', function(players) {
 	 context.fillStyle = 'black';
 	context.fillText(player.name, player.x-15, player.y+20);
 	if(player.isTurn)
-	{
-		context.fillText(player.name+"'s turn", 10,590);
-	}
+=======
+socket.on('state', function(players) {
+  /*for (var id in players) {
   }*/
+});
+var index = 1;
+socket.on('list', function(players) {
+	for(var id in players)
+	{
+		document.getElementById(index+"").innerHTML = ""+players[id].name;
+		index++;
+	}
+	if(index<5)
+>>>>>>> origin/masonsBranch
+	{
+		for(index; index<5; index++)
+		{
+			document.getElementById(index+"").innerHTML = "Open";
+		}
+	}
+<<<<<<< HEAD
+  }*/
+=======
+	index = 1;
+>>>>>>> origin/masonsBranch
 });

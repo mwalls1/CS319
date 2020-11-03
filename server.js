@@ -8,6 +8,8 @@ var app = express();
 app.set('port', process.env.PORT || 5000);
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
+var gStart = true;
+var gameStarted = false;
 app.use(express.static(__dirname));
 // Routing
 app.get('/', function(request, response) {
@@ -15,9 +17,6 @@ app.get('/', function(request, response) {
 });
 // Starts the server.
 
-// Add the WebSocket handlers
-io.on('connection', function(socket) {
-});
 
 var players = {};
 io.on('connection', function(socket) {
@@ -36,16 +35,22 @@ io.on('connection', function(socket) {
     players[socket.id] = {
       x: 300,
 	  y: 300,
-	  num: numPlayers,
 	  name: data.pName,
 	  isTurn: temp,
-	  color: data.pColor
+	  color: data.pColor,
+	  isReady: false,
+	  num: numPlayers
     };
+	var name = data.pName;
+   io.to(socket.id).emit('name', name);
   });
   socket.on('disconnect', function() {
 	  numPlayers--;
 	  console.log('Player Disconnected. Num Players:'+numPlayers);
 	delete players[socket.id];
+  });
+  socket.on('ready', function(data) {
+	  players[socket.id].isReady = data;
   });
   socket.on('move', function(data) {
     var player = players[socket.id] || {};
@@ -85,8 +90,26 @@ io.on('connection', function(socket) {
   });
 });
 setInterval(function() {
+<<<<<<< HEAD
   io.sockets.emit('state', players);
 }, 5000);
+=======
+  io.sockets.emit('list', players);
+  gStart = true;
+  for(var id in players)
+  {
+	  if(!players[id].isReady)
+	  {
+		  gStart = false;
+	  }
+  }
+  if(!gameStarted && gStart && numPlayers > 0)
+  {
+	  io.sockets.emit('start');
+  }
+  
+}, 1000);
+>>>>>>> origin/masonsBranch
 server.listen(app.get('port'), function() {
   console.log('Starting server on port 5000');
 });
