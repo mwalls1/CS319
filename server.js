@@ -39,7 +39,8 @@ io.on('connection', function(socket) {
 	  isTurn: temp,
 	  color: data.pColor,
 	  isReady: false,
-	  num: numPlayers
+	  num: numPlayers,
+	  curSpot: 0
     };
 	var name = data.pName;
    io.to(socket.id).emit('name', name);
@@ -52,40 +53,35 @@ io.on('connection', function(socket) {
   socket.on('ready', function(data) {
 	  players[socket.id].isReady = data;
   });
-  socket.on('move', function(data) {
+  socket.on('turnOver', function (){
+	   var player = players[socket.id] || {};
+	   if(player.isTurn)
+	   {
+			player.isTurn = false;
+			if(pTurn >= numPlayers)
+			{
+				pTurn = 1;
+			}
+			else
+			{
+				pTurn++;
+			}
+			for (var id in players) {
+				if(players[id].num == pTurn)
+				{
+					players[id].isTurn = true;
+				}
+			}
+	   }
+  });
+  socket.on('spin', function() {
     var player = players[socket.id] || {};
 	if(player.isTurn)
 	{
-	if (data.left) {
-      player.x -= 5;
-    }
-    if (data.up) {
-      player.y -= 5;
-    }
-    if (data.right) {
-      player.x += 5;
-    }
-    if (data.down) {
-      player.y += 5;
-    }
-	if(data.next)
-	{
-		players[socket.id].isTurn = false;
-		if(pTurn >= numPlayers)
-		{
-			pTurn = 1;
-		}
-		else
-		{
-			pTurn++;
-		}
-		for (var id in players) {
-			if(players[id].num == pTurn)
-			{
-				players[id].isTurn = true;
-			}
-		}
-	}
+		var spinVal = Math.floor((Math.random() * 4) + 1);
+		player.curSpot += spinVal;
+		var tempVal = player.name+" spun a "+spinVal;
+		io.sockets.emit('spinVal', tempVal);
 	}
   });
 });
