@@ -82,8 +82,6 @@ socket.on('list', function(players) {
 		document.getElementById(index+"").innerHTML = ""+players[id].name+". Current Space: "+players[id].curSpot;
 		if(players[id].isTurn)
 		{
-			var temp2 = new Image(5,5);
-			temp2.src = '../images/ready.png';
 			document.getElementById("turn").innerHTML=players[id].name+"'s turn";
 		}
 		index++;
