@@ -157,8 +157,8 @@ io.on('connection', function(socket) {
 		player.curSpot += spinVal;
 		var tempVal = player.name+" spun a "+spinVal;
 		io.sockets.emit('spinVal', tempVal);
-		player.score += board[player.curSpot].points;
-		var tempPoint = board[player.curSpot].message + "  -->  Now " + player.name + " has "+ player.score + " points.";
+		players[socket.id].score += board[player.curSpot].points;
+		var tempPoint = board[player.curSpot].message + "  -->  Now " + player.name + " has "+ players[socket.id].score + " points.";
 		io.sockets.emit('yellowSpace', tempPoint);
 	}
   });
