@@ -69,9 +69,8 @@ socket.on('spinVal', function(tempVal) {
 });
 
 
-socket.on('yellowSpace', function(/*the value*/) {
-	//Do more stuff
-	window.alert(/*something*/);
+socket.on('yellowSpace', function(tempPoint) {
+	window.alert(tempPoint);
 });
 
 
@@ -79,7 +78,7 @@ var index = 1;
 socket.on('list', function(players) {
 	for(var id in players)
 	{
-		document.getElementById(index+"").innerHTML = ""+players[id].name+". Current Space: "+players[id].curSpot;
+		document.getElementById(index+"").innerHTML = ""+players[id].name+". Current Space: "+players[id].curSpot + ". Current Score: " + players[id].score;
 		if(players[id].isTurn)
 		{
 			document.getElementById("turn").innerHTML=players[id].name+"'s turn";
