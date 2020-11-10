@@ -88,6 +88,16 @@ var board = new Array(start, major, y1, y2, y3, y4, gpa1, y5, y6, y7, y8, sophom
 						senior, y30, y31, y32, gpa4, y33, y34, y35, y36, y37, y38, y39, end);
 						
 
+function Major(name, points) {
+	this.name = name;
+	this.points = points;
+}	
+var m1 = new Major("Business", 10);
+var m2 = new Major("English", 5);
+var m3 = new Major("History", 5);
+var m4 = new Major("Engineering", 15);
+var m5 = new Major("Design", 10);
+var majors = [m1, m2, m3, m4, m5];
 
 var players = {};
 io.on('connection', function(socket) {
@@ -113,7 +123,8 @@ io.on('connection', function(socket) {
 	  num: numPlayers,
 	  curSpot: 0, 
 	  hasSpun: false,
-	  score: 0
+	  score: 0,
+	  major: majors[Math.floor(Math.random() * 5)]
     };
 	var name = data.pName;
    io.to(socket.id).emit('name', name);

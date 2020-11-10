@@ -78,7 +78,7 @@ var index = 1;
 socket.on('list', function(players) {
 	for(var id in players)
 	{
-		document.getElementById(index+"").innerHTML = ""+players[id].name+". Current Space: "+players[id].curSpot + ". Current Score: " + players[id].score;
+		document.getElementById(index+"").innerHTML = "Player " + index + ": " + players[id].name+" | Current Space: "+players[id].curSpot + " | Current Score: " + players[id].score + " | Major: " + players[id].major.name + " (+" + players[id].major.points + " points)";
 		if(players[id].isTurn)
 		{
 			document.getElementById("turn").innerHTML=players[id].name+"'s turn";
