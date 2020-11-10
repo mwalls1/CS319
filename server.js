@@ -33,7 +33,7 @@ function Space(position, type, points, message) {
 //still need to figure out position, but this is a start
 
 var start = new Space(0, "start", 0, "Start");
-var major = new Space(1, "major", 0, "Choose a Major");
+var y0 = new Space(1, "yellow", 20, "Get accepted to ISU (+20)");
 var y1 = new Space(2, "yellow", 10, "Move in to the dorms (+10)");
 var y2 = new Space(3, "yellow", 10, "Join a club (+10)");
 var y3 = new Space(4, "yellow", -5, "Turn all of your white clothes pink doing laundry (-5)");
@@ -82,7 +82,7 @@ var y38 = new Space(46, "yellow", 10, "Go bowling at CyBowl & Billiards (+10)");
 var y39 = new Space(47, "yellow", -5, "Dog eats your homework (-5)");
 var end = new Space(48, "end", 0, "Graduation");
 
-var board = new Array(start, major, y1, y2, y3, y4, gpa1, y5, y6, y7, y8, sophomore, 
+var board = new Array(start, y0, y1, y2, y3, y4, gpa1, y5, y6, y7, y8, sophomore, 
 						y9, y10, y11, y12, gpa2, y13, y14, y15, y16, junior, y17, y18,
 						y19, y20, y21, gpa3, y22, y23, y24, y25, y26, y27, y28, y29,
 						senior, y30, y31, y32, gpa4, y33, y34, y35, y36, y37, y38, y39, end);
