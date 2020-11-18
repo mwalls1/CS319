@@ -72,7 +72,20 @@ socket.on('spinVal', function(tempVal) {
 socket.on('yellowSpace', function(tempPoint) {
 	window.alert(tempPoint);
 });
-
+socket.on('end', function(players){
+	var max = -1000;
+	var winner = "";
+	for(var id in players)
+	{
+		if(players[id].score > max)
+		{
+			max = players[id].score;
+			winner = players[id].name;
+		}
+	}
+	window.alert("The winner is: "+winner);
+	window.location.href="lobby.html";
+});
 
 var index = 1;
 socket.on('list', function(players) {

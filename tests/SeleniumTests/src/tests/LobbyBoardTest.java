@@ -58,7 +58,7 @@ public class LobbyBoardTest {
 		driver.findElement(By.id("ready")).click();
 		Thread.sleep(2000);
 		strName=driver.findElement(By.id("1")).getText();
-		assertEquals("Failed test case", strName, testName+". Current Space: 0");
+		assertEquals("Failed test case", strName, testName+". Current Space: 0. Current Score: 0");
 		
 	}
 
@@ -82,7 +82,7 @@ public class LobbyBoardTest {
 		driver.findElement(By.id("ready")).click();
 		Thread.sleep(2000);
 		strName=driver.findElement(By.id("1")).getText();
-		assertNotEquals("Failed test case", strName, testName+". Current Space: 0");
+		assertNotEquals("Failed test case", strName, testName+". Current Space: 0. Current Score: 0");
 		
 	}
 	

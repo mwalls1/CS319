@@ -9,6 +9,7 @@ app.set('port', process.env.PORT || 5000);
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 var gStart = true;
+var gEnd = true;
 var gameStarted = false;
 app.use(express.static(__dirname));
 // Routing
@@ -38,7 +39,7 @@ var y1 = new Space(2, "yellow", 10, "Move in to the dorms (+10)");
 var y2 = new Space(3, "yellow", 10, "Join a club (+10)");
 var y3 = new Space(4, "yellow", -5, "Turn all of your white clothes pink doing laundry (-5)");
 var y4 = new Space(5, "yellow", 15, "Meet a new friend (+15)");
-var gpa1 = new Space(6, "major", 0, "GPA Boost");
+var gpa1 = new Space(6, "gpa", 0, "GPA Boost");
 var y5 = new Space(7, "yellow", -15, "Fail a midterm (-15)");
 var y6 = new Space(8, "yellow", 5, "Go to Cyclone Cinema (+5)");
 var y7 = new Space(9, "yellow", -5, "Your roommate snores too loud (-5)");
@@ -48,7 +49,7 @@ var y9 = new Space(12, "yellow", 15, "Go to a football game (+15)");
 var y10 = new Space(13, "yellow", -10, "Forgot to turn in an assignment (-10)");
 var y11 = new Space(14, "yellow", 10, "Wing night at the dining center (+10)");
 var y12 = new Space(15, "yellow", 5, "Get an on campus job (+5)");
-var gpa2 = new Space(16, "major", 0, "GPA Boost");
+var gpa2 = new Space(16, "gpa", 0, "GPA Boost");
 var y13 = new Space(17, "yellow", -20, "Get Covid-19 (-20)");
 var y14 = new Space(18, "yellow", 5, "Go campaniling (+5)");
 var y15 = new Space(19, "yellow", -5, "Stuck washing dishing in the dining center (-5)");
@@ -59,7 +60,7 @@ var y18 = new Space(23, "yellow", -10, "Cyclones lost a football game (-10)");
 var y19 = new Space(24, "yellow", -5, "Car breaks down (-5)");
 var y20 = new Space(25, "yellow", 10, "Join intramurals (+10)");
 var y21 = new Space(26, "yellow", 5, "Go to ISU AfterDark (+5)");
-var gpa3 = new Space(27, "major", 0, "GPA Boost");
+var gpa3 = new Space(27, "gpa", 0, "GPA Boost");
 var y22 = new Space(28, "yellow", -10, "Got locked out of your apartment (-10)");
 var y23 = new Space(29, "yellow", 15, "Study abroad (+15)");
 var y24 = new Space(30, "yellow", -5, "Lose your student ID (-5)");
@@ -72,7 +73,7 @@ var senior = new Space(36, "major", 0, "Start senior year");
 var y30 = new Space(37, "yellow", -15, "Step on the zodiac (-15)");
 var y31 = new Space(38, "yellow", 10, "Become a peer mentor (+10)");
 var y32 = new Space(39, "yellow", 5, "Visit Reiman Gardens (+5)");
-var gpa4 = new Space(40, "major", 0, "GPA Boost");
+var gpa4 = new Space(40, "gpa", 0, "GPA Boost");
 var y33 = new Space(41, "yellow", -5, "Pop quiz (-5)");
 var y34 = new Space(42, "yellow", -5, "Heater breaks (-5)");
 var y35 = new Space(43, "yellow", 10, "See a concert at the Maintenance Shop (+10)");
@@ -80,7 +81,7 @@ var y36 = new Space(44, "yellow", 5, "Take a cycling class (+5)");
 var y37 = new Space(45, "yellow", -10, "Fall asleep during lecture (-10)");
 var y38 = new Space(46, "yellow", 10, "Go bowling at CyBowl & Billiards (+10)");
 var y39 = new Space(47, "yellow", -5, "Dog eats your homework (-5)");
-var end = new Space(48, "end", 0, "Graduation");
+var end = new Space(48, "end", 20, "Graduation");
 
 var board = new Array(start, y0, y1, y2, y3, y4, gpa1, y5, y6, y7, y8, sophomore, 
 						y9, y10, y11, y12, gpa2, y13, y14, y15, y16, junior, y17, y18,
@@ -124,6 +125,7 @@ io.on('connection', function(socket) {
 	  curSpot: 0, 
 	  hasSpun: false,
 	  score: 0,
+	  finished: false,
 	  major: majors[Math.floor(Math.random() * 5)]
     };
 	var name = data.pName;
@@ -137,10 +139,54 @@ io.on('connection', function(socket) {
   socket.on('ready', function(data) {
 	  players[socket.id].isReady = data;
   });
-  socket.on('turnOver', function (){
-	   var player = players[socket.id] || {};
-	   if(player.isTurn && player.hasSpun)
-	   {
+  socket.on('spin', function() {
+    var player = players[socket.id] || {};
+	if(player.isTurn && !player.hasSpun)
+	{
+		if(!player.finished)
+		{
+			player.hasSpun = true;
+			var spinVal = Math.floor((Math.random() * 4) + 1);
+			var gpaBoost = 0;
+			var majorPoints = 0;
+			if((player.curSpot < 6 && player.curSpot + spinVal > 6) || (player.curSpot < 16 && player.curSpot + spinVal > 16) || (player.curSpot < 40 && player.curSpot + spinVal > 40) || (player.curSpot < 27 && player.curSpot + spinVal > 27))
+			{
+				gpaBoost = 10;
+			}
+			if((player.curSpot < 11 && player.curSpot + spinVal > 11) || (player.curSpot < 21 && player.curSpot + spinVal > 21) || (player.curSpot < 36 && player.curSpot + spinVal > 36))
+			{
+				majorPoints = players[socket.id].major.points;
+			}
+			if((player.curSpot + spinVal)>=48)
+			{
+				player.finished = true;
+				player.curSpot = 48;
+			}
+			else
+				player.curSpot += spinVal;
+			var tempVal = player.name+" spun a "+spinVal;
+			io.sockets.emit('spinVal', tempVal);
+			if(board[player.curSpot].type == "major")
+				players[socket.id].score += players[socket.id].major.points+gpaBoost+majorPoints;
+			else
+				players[socket.id].score += board[player.curSpot].points+gpaBoost+majorPoints;
+			var tempPoint;
+			var addPoints;
+			if(gpaBoost>0)
+			{
+				if(majorPoints>0)
+					tempPoint = board[player.curSpot].message + " You also passed a GPA Boost tile(+10) and started a new year.  -->  Now " + player.name + " has "+ players[socket.id].score + " points.";
+				else
+					tempPoint = board[player.curSpot].message + " You also passed a GPA Boost tile(+10).  -->  Now " + player.name + " has "+ players[socket.id].score + " points.";
+			}
+			else if(majorPoints>0)
+				tempPoint = board[player.curSpot].message + " You also started a new year.  -->  Now " + player.name + " has "+ players[socket.id].score + " points.";
+			else
+				tempPoint = board[player.curSpot].message + "  -->  Now " + player.name + " has "+ players[socket.id].score + " points.";
+			io.sockets.emit('yellowSpace', tempPoint);
+		}
+		if(player.hasSpun||player.finished)
+	    {
 			player.isTurn = false;
 			player.hasSpun = false;
 			if(pTurn >= numPlayers)
@@ -157,20 +203,7 @@ io.on('connection', function(socket) {
 					players[id].isTurn = true;
 				}
 			}
-	   }
-  });
-  socket.on('spin', function() {
-    var player = players[socket.id] || {};
-	if(player.isTurn && !player.hasSpun)
-	{
-		player.hasSpun = true;
-		var spinVal = Math.floor((Math.random() * 4) + 1);
-		player.curSpot += spinVal;
-		var tempVal = player.name+" spun a "+spinVal;
-		io.sockets.emit('spinVal', tempVal);
-		players[socket.id].score += board[player.curSpot].points;
-		var tempPoint = board[player.curSpot].message + "  -->  Now " + player.name + " has "+ players[socket.id].score + " points.";
-		io.sockets.emit('yellowSpace', tempPoint);
+	    }
 	}
   });
 });
@@ -179,6 +212,7 @@ setInterval(function() {
   io.sockets.emit('state', players);
   io.sockets.emit('list', players);
   gStart = true;
+  gEnd = true;
   for(var id in players)
   {
 	  if(!players[id].isReady)
@@ -188,7 +222,20 @@ setInterval(function() {
   }
   if(!gameStarted && gStart && numPlayers > 0)
   {
+	  gameStarted = true;
 	  io.sockets.emit('start');
+  }
+  for(var id in players)
+  {
+	  if(!players[id].finished)
+	  {
+		  gEnd = false;
+	  }
+  }
+  if(gameStarted && gEnd && numPlayers > 0)
+  {
+	  gameStarted = false;
+	  io.sockets.emit('end', players);
   }
   
 }, 1000);
