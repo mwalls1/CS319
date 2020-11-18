@@ -1,6 +1,7 @@
 var name = localStorage.getItem("name");
 var color = localStorage.getItem("color");
 var socket = io.connect();
+var boardSpots = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 var pData = {
 	pName: name,
 	pColor: color
@@ -89,6 +90,20 @@ socket.on('end', function(players){
 
 var index = 1;
 socket.on('list', function(players) {
+	for(var i = 0; i < 49; i++)
+	{
+		for(var j = 1; j < 4; j++)
+		{
+			document.getElementById(""+i+""+j).innerHTML=" ";
+		}
+	}
+	for(var id in players)
+	{
+		boardSpots[players[id].curSpot]++;
+		if(players[id].curSpot > 0 && players[id].curSpot< 48)
+			document.getElementById(""+players[id].curSpot+""+boardSpots[players[id].curSpot]).innerHTML = ""+players[id].name;
+	}
+	boardSpots = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 	for(var id in players)
 	{
 		document.getElementById(index+"").innerHTML = "Player " + index + ": " + players[id].name+" | Current Space: "+players[id].curSpot + " | Current Score: " + players[id].score + " | Major: " + players[id].major.name + " (+" + players[id].major.points + " points)";

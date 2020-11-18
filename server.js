@@ -39,7 +39,7 @@ var y1 = new Space(2, "yellow", 10, "Move in to the dorms (+10)");
 var y2 = new Space(3, "yellow", 10, "Join a club (+10)");
 var y3 = new Space(4, "yellow", -5, "Turn all of your white clothes pink doing laundry (-5)");
 var y4 = new Space(5, "yellow", 15, "Meet a new friend (+15)");
-var gpa1 = new Space(6, "gpa", 0, "GPA Boost");
+var gpa1 = new Space(6, "gpa", 10, "GPA Boost (+10)");
 var y5 = new Space(7, "yellow", -15, "Fail a midterm (-15)");
 var y6 = new Space(8, "yellow", 5, "Go to Cyclone Cinema (+5)");
 var y7 = new Space(9, "yellow", -5, "Your roommate snores too loud (-5)");
@@ -49,7 +49,7 @@ var y9 = new Space(12, "yellow", 15, "Go to a football game (+15)");
 var y10 = new Space(13, "yellow", -10, "Forgot to turn in an assignment (-10)");
 var y11 = new Space(14, "yellow", 10, "Wing night at the dining center (+10)");
 var y12 = new Space(15, "yellow", 5, "Get an on campus job (+5)");
-var gpa2 = new Space(16, "gpa", 0, "GPA Boost");
+var gpa2 = new Space(16, "gpa", 10, "GPA Boost (+10)");
 var y13 = new Space(17, "yellow", -20, "Get Covid-19 (-20)");
 var y14 = new Space(18, "yellow", 5, "Go campaniling (+5)");
 var y15 = new Space(19, "yellow", -5, "Stuck washing dishing in the dining center (-5)");
@@ -60,7 +60,7 @@ var y18 = new Space(23, "yellow", -10, "Cyclones lost a football game (-10)");
 var y19 = new Space(24, "yellow", -5, "Car breaks down (-5)");
 var y20 = new Space(25, "yellow", 10, "Join intramurals (+10)");
 var y21 = new Space(26, "yellow", 5, "Go to ISU AfterDark (+5)");
-var gpa3 = new Space(27, "gpa", 0, "GPA Boost");
+var gpa3 = new Space(27, "gpa", 10, "GPA Boost (+10)");
 var y22 = new Space(28, "yellow", -10, "Got locked out of your apartment (-10)");
 var y23 = new Space(29, "yellow", 15, "Study abroad (+15)");
 var y24 = new Space(30, "yellow", -5, "Lose your student ID (-5)");
@@ -69,11 +69,11 @@ var y26 = new Space(32, "yellow", 10, "Receive an academic scholarship (+10)");
 var y27 = new Space(33, "yellow", -5, "Sleep past your alarm (-5)");
 var y28 = new Space(34, "yellow", 10, "Pick up a minor (+10)");
 var y29 = new Space(35, "yellow", 15, "Get a summer internship (+15)");
-var senior = new Space(36, "major", 0, "Start senior year");
+var senior = new Space(36, "major", 10, "Start senior year");
 var y30 = new Space(37, "yellow", -15, "Step on the zodiac (-15)");
 var y31 = new Space(38, "yellow", 10, "Become a peer mentor (+10)");
 var y32 = new Space(39, "yellow", 5, "Visit Reiman Gardens (+5)");
-var gpa4 = new Space(40, "gpa", 0, "GPA Boost");
+var gpa4 = new Space(40, "gpa", 10, "GPA Boost (+10)");
 var y33 = new Space(41, "yellow", -5, "Pop quiz (-5)");
 var y34 = new Space(42, "yellow", -5, "Heater breaks (-5)");
 var y35 = new Space(43, "yellow", 10, "See a concert at the Maintenance Shop (+10)");
@@ -164,6 +164,7 @@ io.on('connection', function(socket) {
 			}
 			else
 				player.curSpot += spinVal;
+			console.log(player.name+"is at "+player.curSpot);
 			var tempVal = player.name+" spun a "+spinVal;
 			io.sockets.emit('spinVal', tempVal);
 			if(board[player.curSpot].type == "major")
@@ -198,7 +199,7 @@ io.on('connection', function(socket) {
 				pTurn++;
 			}
 			for (var id in players) {
-				if(players[id].num == pTurn)
+				if(players[id].num == pTurn && !players[id].finished)
 				{
 					players[id].isTurn = true;
 				}
@@ -219,18 +220,26 @@ setInterval(function() {
 	  {
 		  gStart = false;
 	  }
+	  if(players[id].finished == false)
+	  {
+		  gEnd = false;
+	  }
+	  if(players[id].finished)
+	  {
+		  if(pTurn >= numPlayers)
+			{
+				pTurn = 1;
+			}
+			else
+			{
+				pTurn++;
+			}
+	  }
   }
   if(!gameStarted && gStart && numPlayers > 0)
   {
 	  gameStarted = true;
 	  io.sockets.emit('start');
-  }
-  for(var id in players)
-  {
-	  if(!players[id].finished)
-	  {
-		  gEnd = false;
-	  }
   }
   if(gameStarted && gEnd && numPlayers > 0)
   {
@@ -238,7 +247,7 @@ setInterval(function() {
 	  io.sockets.emit('end', players);
   }
   
-}, 1000);
+}, 100);
 server.listen(app.get('port'), function() {
   console.log('Starting server on port 5000');
 });
