@@ -132,7 +132,8 @@ io.on('connection', function(socket) {
    io.to(socket.id).emit('name', name);
   });
   socket.on('disconnect', function() {
-	  numPlayers--;
+	  if(numPlayers>0)
+		numPlayers--;
 	  console.log('Player Disconnected. Num Players:'+numPlayers);
 	delete players[socket.id];
   });
@@ -224,7 +225,7 @@ setInterval(function() {
 	  {
 		  gEnd = false;
 	  }
-	  if(players[id].finished)
+	  if(players[id].finished&&players[id].num==pTurn)
 	  {
 		  if(pTurn >= numPlayers)
 			{
@@ -235,6 +236,8 @@ setInterval(function() {
 				pTurn++;
 			}
 	  }
+	  if(players[id].num==pTurn&&!players[id].finished)
+		  players[id].isTurn = true;
   }
   if(!gameStarted && gStart && numPlayers > 0)
   {
