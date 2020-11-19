@@ -3,6 +3,10 @@
 <head>
 <title>Game of Life</title>
 <style>
+p{
+	font-size:0.8vw;
+	font-weight:bold;
+}
 table{
 	width:100%;
 	border: solid rgb(0,0,0);
@@ -65,13 +69,23 @@ img{
 }
 .top-left{
 	position: absolute;
-	top: 2px;
-	left: 4px;
+	top: -20%;
+	left: 1px;
 }
 .top-left2{
 	position: absolute;
-	top: 16px;
-	left: 4px;
+	top: 5%;
+	left: 1px;
+}
+.top-left3{
+	position: absolute;
+	top: 30%;
+	left: 1px;
+}
+.top-left4{
+	position: absolute;
+	top: 55%;
+	left: 1px;
 }
 
 </style>
@@ -150,91 +164,104 @@ img{
 	<tr>
 		<td></td>
 		<td></td>
-		<td class="startEnd" rowspan="2"><img src="../images/start2.png"><div class="top-left">
-				<p id="01" label="Open" value="Open"></p>
-				<p id="02" label="Open" value="Open"></p>
-				<p id="03" label="Open" value="Open"></p>
+		<td class="startEnd" rowspan="2"><div class="container"><img src="../images/start2.png"><div class="top-left">
+			<p id="01" label="Open" value="Open"></p> </div><div class="top-left2">
+			<p id="02" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="03" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="04" label="Open" value="Open"></p>
 		</div></div></td>
 		<td></td>
 		<td> </td>
 		<td> </td>
 		<td></td>
-		<td class="gpa"><div class="container"><img src="../images/gpaBoost.png"><div class="top-left">
-				<p id="161" label="Open" value="Open"></p>
-				<p id="162" label="Open" value="Open"></p>
-				<p id="163" label="Open" value="Open"></p>
+		<td class="gpa"><div class="container"><img src="../images/red.png"><div class="top-left">
+			<p id="161" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="162" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="163" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="164" label="Open" value="Open"></p>
 		</div></div></td>
 		
-		<td class="background"><div class="yellow"><img src="../images/17.png"><div class="top-left">
-			<p id="171" label="Open" value="Open"></p>
-				<p id="172" label="Open" value="Open"></p>
-				<p id="173" label="Open" value="Open"></p>
-		</div></div></td>
-		
-		
-		<td class="background" id="testSpace18"><div class="yellow"><img src="../images/18.png"><div class="top-left">
-				<p id="181" label="Open" value="Open"></p>
-				<p id="182" label="Open" value="Open"></p>
-				<p id="183" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="171" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="172" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="173" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="174" label="Open" value="Open"></p>
 		</div></div></td>
 		
 		
+		<td class="background" id="testSpace18"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="181" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="182" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="183" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="184" label="Open" value="Open"></p>
+		</div></div></td>
 		
-		<td class="background"><div class="yellow"><img src="../images/19.png"><div class="top-left">
-				<p id="191" label="Open" value="Open"></p>
-				<p id="192" label="Open" value="Open"></p>
-				<p id="193" label="Open" value="Open"></p>
+		
+		
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="191" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="192" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="193" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="194" label="Open" value="Open"></p>
 		</div></div> </td>
 		
-		<td class="background"><div class="yellow"><img src="../images/20.png"><div class="top-left">
-				<p id="201" label="Open" value="Open"></p>
-				<p id="202" label="Open" value="Open"></p>
-				<p id="203" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="201" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="202" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="203" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="204" label="Open" value="Open"></p>
 		</div></div></td>
 		
-		<td class="newYear"><div class="container"><img src="../images/junior.png"><div class="top-left">
-				<p id="211" label="Open" value="Open"></p>
-				<p id="212" label="Open" value="Open"></p>
-				<p id="213" label="Open" value="Open"></p>
+		<td class="newYear"><div class="container"><img src="../images/brown.png"><div class="top-left">
+			<p id="211" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="212" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="213" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="214" label="Open" value="Open"></p>
 		</div></div></td>
 		
 		<td></td>
 		<td> </td>
 		<td> </td>
 		<td> </td>
-		<td class="background"><div class="yellow"><img src="../images/38.png"><div class="top-left">
-				<p id="381" label="Open" value="Open"></p>
-				<p id="382" label="Open" value="Open"></p>
-				<p id="383" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="381" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="382" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="383" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="384" label="Open" value="Open"></p>
 		</div></div> </td>
 		
-		<td class="background"><div class="yellow"><img src="../images/39.png"><div class="top-left">
-				<p id="391" label="Open" value="Open"></p>
-				<p id="392" label="Open" value="Open"></p>
-				<p id="393" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="391" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="392" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="393" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="394" label="Open" value="Open"></p>
 		</div></div></td>
 		
-		<td class="gpa"><div class="container"><img src="../images/gpaBoost.png"><div class="top-left">
-				<p id="401" label="Open" value="Open"></p>
-				<p id="402" label="Open" value="Open"></p>
-				<p id="403" label="Open" value="Open"></p>
+		<td class="gpa"><div class="container"><img src="../images/red.png"><div class="top-left">
+			<p id="401" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="402" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="403" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="404" label="Open" value="Open"></p>
 		</div></div>  </td>
 		
-		<td class="background"><div class="yellow"><img src="../images/41.png"><div class="top-left">
-			<p id="411" label="Open" value="Open"></p>
-			<p id="412" label="Open" value="Open"></p>
-			<p id="413" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="411" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="412" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="413" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="414" label="Open" value="Open"></p>
 		</div></div> </td>
 		
-		<td class="background"><div class="yellow"><img src="../images/42.png"><div class="top-left">
-			<p id="421" label="Open" value="Open"></p>
-			<p id="422" label="Open" value="Open"></p>
-			<p id="423" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="421" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="422" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="423" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="424" label="Open" value="Open"></p>
 		</div></div> </td>
-		<td class="background"><div class="yellow"><img src="../images/43.png"><div class="top-left">
-			<p id="431" label="Open" value="Open"></p>
-			<p id="432" label="Open" value="Open"></p>
-			<p id="433" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="431" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="432" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="433" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="434" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td> </td>
@@ -248,37 +275,41 @@ img{
 		<td></td>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/15.png"><div class="top-left">
-			<p id="151" label="Open" value="Open"></p>
-			<p id="152" label="Open" value="Open"></p>
-			<p id="153" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="151" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="152" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="153" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="154" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td> </td>
-		<td class="background"><div class="yellow"><img src="../images/22.png"><div class="top-left">
-			<p id="221" label="Open" value="Open"></p>
-			<p id="222" label="Open" value="Open"></p>
-			<p id="223" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="221" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="222" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="223" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="224" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td></td>
 		<td> </td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/37.png"><div class="top-left">
-			<p id="371" label="Open" value="Open"></p>
-			<p id="372" label="Open" value="Open"></p>
-			<p id="373" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="371" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="372" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="373" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="374" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/44.png"><div class="top-left">
-			<p id="441" label="Open" value="Open"></p>
-			<p id="442" label="Open" value="Open"></p>
-			<p id="443" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="441" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="442" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="443" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="444" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td></td>
@@ -289,46 +320,51 @@ img{
 	<tr>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/1.png"><div class="top-left">
-			<p id="11" label="Open" value="Open"></p>
-			<p id="12" label="Open" value="Open"></p>
-			<p id="13" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="11" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="12" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="13" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="14" label="Open" value="Open"></p>
 		</div></div></td>
 		<td> </td>
 		<td></td>
 		<td></td>
 		<td> </td>
-		<td class="background"><div class="yellow"><img src="../images/14.png"><div class="top-left">
-			<p id="141" label="Open" value="Open"></p>
-			<p id="142" label="Open" value="Open"></p>
-			<p id="143" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="141" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="142" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="143" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="144" label="Open" value="Open"></p>
 		</div></div>  </td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td> </td>
-		<td class="background"><div class="yellow"><img src="../images/23.png"><div class="top-left">
-			<p id="231" label="Open" value="Open"></p>
-			<p id="232" label="Open" value="Open"></p>
-			<p id="233" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="231" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="232" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="233" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="234" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td> </td>
 		<td></td>
 		<td> </td>
 		<td> </td>
-		<td class="newYear"><div class="container"><img src="../images/senior.png"><div class="top-left">
-			<p id="361" label="Open" value="Open"></p>
-			<p id="362" label="Open" value="Open"></p>
-			<p id="363" label="Open" value="Open"></p>
+		<td class="newYear"><div class="container"><img src="../images/brown.png"><div class="top-left">
+			<p id="361" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="362" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="363" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="364" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/45.png"><div class="top-left">
-			<p id="451" label="Open" value="Open"></p>
-			<p id="452" label="Open" value="Open"></p>
-			<p id="453" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="451" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="452" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="453" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="454" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td></td>
@@ -338,46 +374,51 @@ img{
 	<tr>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/2.png"><div class="top-left">
-			<p id="21" label="Open" value="Open"></p>
-			<p id="22" label="Open" value="Open"></p>
-			<p id="23" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="21" label="Open" value="Open"></p> </div><div class="top-left2">
+			<p id="22" label="Open" value="Open"></p> </div><div class="top-left3">
+			<p id="23" label="Open" value="Open"></p> </div><div class="top-left4">
+			<p id="24" label="Open" value="Open"></p> </div>
 		</div></div> </td>
 		<td> </td>
 		<td>  </td>
 		<td></td>
 		<td> </td>
-		<td class="background"><div class="yellow"><img src="../images/13.png"><div class="top-left">
-			<p id="131" label="Open" value="Open"></p>
-			<p id="132" label="Open" value="Open"></p>
-			<p id="133" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="131" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="132" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="133" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="134" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td> </td>
 		<td> </td>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/24.png"><div class="top-left">
-			<p id="241" label="Open" value="Open"></p>
-			<p id="242" label="Open" value="Open"></p>
-			<p id="243" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="241" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="242" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="243" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="244" label="Open" value="Open"></p>
 		</div></div></td>
 		<td> </td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/35.png"><div class="top-left">
-			<p id="351" label="Open" value="Open"></p>
-			<p id="352" label="Open" value="Open"></p>
-			<p id="353" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="351" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="352" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="353" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="354" label="Open" value="Open"></p>
 		</div></div>  </td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/46.png"><div class="top-left">
-			<p id="461" label="Open" value="Open"></p>
-			<p id="462" label="Open" value="Open"></p>
-			<p id="463" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="461" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="462" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="463" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="464" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td></td>
@@ -387,46 +428,51 @@ img{
 	<tr>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/3.png"><div class="top-left">
-			<p id="31" label="Open" value="Open"></p>
-			<p id="32" label="Open" value="Open"></p>
-			<p id="33" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="31" label="Open" value="Open"></p> </div><div class="top-left2">
+			<p id="32" label="Open" value="Open"></p> </div><div class="top-left3">
+			<p id="33" label="Open" value="Open"></p> </div><div class="top-left4">
+			<p id="34" label="Open" value="Open"></p>
 		</div></div>  </td>
 		<td></td>
 		<td> </td>
 		<td></td>
 		<td> </td>
-		<td class="background"><div class="yellow"><img src="../images/12.png"><div class="top-left">
-			<p id="121" label="Open" value="Open"></p>
-			<p id="122" label="Open" value="Open"></p>
-			<p id="123" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="121" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="122" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="123" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="124" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td> </td>
 		<td> </td>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/25.png"> <div class="top-left">
-			<p id="251" label="Open" value="Open"></p>
-			<p id="252" label="Open" value="Open"></p>
-			<p id="253" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"> <div class="top-left">
+			<p id="251" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="252" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="253" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="254" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td> </td>
 		<td> </td>
 		<td> </td>
 		<td> </td>
-		<td class="background"><div class="yellow"><img src="../images/34.png"> <div class="top-left">
-			<p id="341" label="Open" value="Open"></p>
-			<p id="342" label="Open" value="Open"></p>
-			<p id="343" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"> <div class="top-left">
+			<p id="341" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="342" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="343" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="344" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/47.png"><div class="top-left">
-			<p id="471" label="Open" value="Open"></p>
-			<p id="472" label="Open" value="Open"></p>
-			<p id="473" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="471" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="472" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="473" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="474" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td></td>
@@ -437,45 +483,51 @@ img{
 	<tr>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/4.png"><div class="top-left">
-			<p id="41" label="Open" value="Open"></p>
-			<p id="42" label="Open" value="Open"></p>
-			<p id="43" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="41" label="Open" value="Open"></p> </div><div class="top-left2">
+			<p id="42" label="Open" value="Open"></p> </div><div class="top-left3">
+			<p id="43" label="Open" value="Open"></p> </div><div class="top-left4">
+			<p id="44" label="Open" value="Open"></p>
 		</div></div></td>
 		<td> </td>
 		<td> </td>
 		<td></td>
 		<td> </td>
-		<td class="newYear"><div class="container"><img src="../images/sophomore.png"><div class="top-left">
-			<p id="111" label="Open" value="Open"></p>
-			<p id="112" label="Open" value="Open"></p>
-			<p id="113" label="Open" value="Open"></p>
+		<td class="newYear"><div class="container"><img src="../images/brown.png"><div class="top-left">
+			<p id="111" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="112" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="113" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="114" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td> </td>
 		<td></td>
 		<td></td>
 		<td> </td>
-		<td class="background"><div class="yellow"><img src="../images/26.png"> <div class="top-left">
-			<p id="261" label="Open" value="Open"></p>
-			<p id="262" label="Open" value="Open"></p>
-			<p id="263" label="Open" value="Open"></p></div></div></td>
+		<td class="background"><div class="yellow"><img src="../images/background.png"> <div class="top-left">
+			<p id="261" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="262" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="263" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="264" label="Open" value="Open"></p>
+		</div></div></td>
 		<td> </td>
 		<td> </td>
 		<td> </td>
 		<td> </td>
-		<td class="background"><div class="yellow"><img src="../images/33.png"> <div class="top-left">
-			<p id="331" label="Open" value="Open"></p>
-			<p id="332" label="Open" value="Open"></p>
-			<p id="333" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"> <div class="top-left">
+			<p id="331" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="332" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="333" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="334" label="Open" value="Open"></p>
 		</div></div></td>
 		<td> </td>
 		<td> </td>
 		<td> </td>
 		<td> </td>
 		<td class="startEnd" rowspan="2"><img src="../images/end.png"><div class="top-left">
-				<p id="481" label="Open" value="Open">Hello</p>
-				<p id="482" label="Open" value="Open"></p>
-				<p id="483" label="Open" value="Open"></p>
+			<p id="481" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="482" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="483" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="484" label="Open" value="Open"></p>
 		</div></div></td>
 		<td></td>
 		<td> </td>
@@ -485,69 +537,81 @@ img{
 	<tr>
 		<td></td>
 		<td></td>
-		<td class="background"><div class="yellow"><img src="../images/5.png"> <div class="top-left">
-			<p id="51" label="Open" value="Open"></p>
-			<p id="52" label="Open" value="Open"></p>
-			<p id="53" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"> <div class="top-left">
+			<p id="51" label="Open" value="Open"></p> </div><div class="top-left2">
+			<p id="52" label="Open" value="Open"></p> </div><div class="top-left3">
+			<p id="53" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="54" label="Open" value="Open"></p>
 		</div></div></td>
-		<td class="gpa"><div class="container"><img src="../images/gpaBoost.png"><div class="top-left">
-			<p id="61" label="Open" value="Open"></p>
-			<p id="62" label="Open" value="Open"></p>
-			<p id="63" label="Open" value="Open"></p>
+		<td class="gpa"><div class="container"><img src="../images/red.png"><div class="top-left">
+			<p id="61" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="62" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="63" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="64" label="Open" value="Open"></p>
 		</div></div></td>
-		<td class="background"><div class="yellow"><img src="../images/7.png"><div class="top-left">
-			<p id="71" label="Open" value="Open"></p>
-			<p id="72" label="Open" value="Open"></p>
-			<p id="73" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="71" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="72" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="73" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="74" label="Open" value="Open"></p>
 		</div></div></td>
-		<td class="background"><div class="yellow"><img src="../images/8.png"><div class="top-left">
-			<p id="81" label="Open" value="Open"></p>
-			<p id="82" label="Open" value="Open"></p>
-			<p id="83" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="81" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="82" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="83" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="84" label="Open" value="Open"></p>
 		</div></div></td>
-		<td class="background"><div class="yellow"><img src="../images/9.png"><div class="top-left">
-			<p id="91" label="Open" value="Open"></p>
-			<p id="92" label="Open" value="Open"></p>
-			<p id="93" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="91" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="92" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="93" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="94" label="Open" value="Open"></p>
 		</div></div> </td>
-		<td class="background"><div class="yellow"><img src="../images/10.png"><div class="top-left">
-			<p id="101" label="Open" value="Open"></p>
-			<p id="102" label="Open" value="Open"></p>
-			<p id="103" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="101" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="102" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="103" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="104" label="Open" value="Open"></p>
 		</div></div> </td>
 		<td></td>
 		<td></td>
 		<td></td>
 		<td> </td>
-		<td class="gpa"><div class="container"><img src="../images/gpaBoost.png"><div class="top-left">
-			<p id="271" label="Open" value="Open"></p>
-			<p id="272" label="Open" value="Open"></p>
-			<p id="273" label="Open" value="Open"></p>
+		<td class="gpa"><div class="container"><img src="../images/red.png"><div class="top-left">
+			<p id="271" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="272" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="273" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="274" label="Open" value="Open"></p>
 		</div></div> </td>
-		<td class="background"><div class="yellow"><img src="../images/28.png"><div class="top-left">
-			<p id="281" label="Open" value="Open"></p>
-			<p id="282" label="Open" value="Open"></p>
-			<p id="283" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="281" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="282" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="283" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="284" label="Open" value="Open"></p>
 		</div></div></td>
-		<td class="background"><div class="yellow"><img src="../images/29.png"><div class="top-left">
-			<p id="291" label="Open" value="Open"></p>
-			<p id="292" label="Open" value="Open"></p>
-			<p id="293" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="291" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="292" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="293" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="294" label="Open" value="Open"></p>
 		</div></div> </td>
-		<td class="background"><div class="yellow"><img src="../images/30.png"><div class="top-left">
-			<p id="301" label="Open" value="Open"></p>
-			<p id="302" label="Open" value="Open"></p>
-			<p id="303" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="301" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="302" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="303" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="304" label="Open" value="Open"></p>
 		</div></div></td>
-		<td class="background"><div class="yellow"><img src="../images/31.png"><div class="top-left">
-			<p id="311" label="Open" value="Open"></p>
-			<p id="312" label="Open" value="Open"></p>
-			<p id="313" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="311" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="312" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="313" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="314" label="Open" value="Open"></p>
 		</div></div></td>
-		<td class="background"><div class="yellow"><img src="../images/32.png"><div class="top-left">
-			<p id="321" label="Open" value="Open"></p>
-			<p id="322" label="Open" value="Open"></p>
-			<p id="323" label="Open" value="Open"></p>
+		<td class="background"><div class="yellow"><img src="../images/background.png"><div class="top-left">
+			<p id="321" label="Open" value="Open"></p></div><div class="top-left2">
+			<p id="322" label="Open" value="Open"></p></div><div class="top-left3">
+			<p id="323" label="Open" value="Open"></p></div><div class="top-left4">
+			<p id="324" label="Open" value="Open"></p>
 		</div></div></td>
 		<td></td>
 		<td> </td>
@@ -590,7 +654,7 @@ img{
 	</tr>
 </table>
 <div>
-	<p id=turn>Turn</p>
+	<p id=turn style="font-size:16px">Turn</p>
 	<ul>
 		<li id="1" label="Open" value="Open">Open</li>
 		<li id="2" label="Open" value="Open">Open</li>
