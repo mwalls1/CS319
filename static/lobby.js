@@ -104,6 +104,9 @@ socket.on('list', function(players) {
 	}
 	index = 1;
 });
+function back(){
+	window.location.replace("../HTML/mainMenu.html");
+}
 
 
 
