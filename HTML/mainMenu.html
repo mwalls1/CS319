@@ -54,16 +54,7 @@
 		<div>
 		<label for="name">Name:</label>
 		<input type="text" id="name" name="name"><br><br>
-				
-		<label for="color">Select your color:</label>
-		<select id="color" name="color">
-			<option value="red">Red</option>
-			<option value="orange">Orange</option>
-			<option value="yellow">Yellow</option>
-			<option value="green">Green</option>
-			<option value="blue">Blue</option>
-			<option value="purple">Purple</option>
-		</select><br><br>	
+					
 		<button type="button" class="button" onClick="back()" label="back">Back</button>
 		<button type="button" class="button" onClick="getInstructions()" label="instructions">How To Play</button>
 		<button type="button" class="button" onClick="getValue()" label="submit" id="btnClient" name="btnClient">Continue</button>
@@ -71,7 +62,6 @@
 	</form>
 	<script>
 			var inputName;
-			var inputColor;
 			
 			function getInstructions(){
 				window.location.replace("instructions.html");
@@ -80,8 +70,6 @@
 			function getValue(){
 				inputName = document.getElementById("name").value;
 				localStorage.setItem("name",inputName);
-				inputColor = document.getElementById("color").value;
-				localStorage.setItem("color", inputColor);
 				window.location.replace("lobby.html");
 			}
 

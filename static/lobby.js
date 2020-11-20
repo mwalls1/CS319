@@ -1,6 +1,4 @@
 var name = localStorage.getItem("name");
-var color = localStorage.getItem("color");
-console.log(name+" "+color);
 var socket = io.connect();
 
 var temp1 = new Image(15,15);
@@ -36,8 +34,7 @@ var Ready4 =temp8;
 var listData = {};
 var data = false;
 var pData = {
-	pName: name,
-	pColor: color
+	pName: name
 }
 var index = 1;
 socket.emit('new player', pData);

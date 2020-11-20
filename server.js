@@ -119,7 +119,6 @@ io.on('connection', function(socket) {
 	  y: 300,
 	  name: data.pName,
 	  isTurn: temp,
-	  color: data.pColor,
 	  isReady: false,
 	  num: numPlayers,
 	  curSpot: 0, 

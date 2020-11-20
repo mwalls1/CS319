@@ -1,10 +1,8 @@
 var name = localStorage.getItem("name");
-var color = localStorage.getItem("color");
 var socket = io.connect();
 var boardSpots = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 var pData = {
 	pName: name,
-	pColor: color
 }
 socket.on('message', function(data) {
   console.log(data);
