@@ -243,10 +243,6 @@ setInterval(function() {
 	  {
 		  ready = false;
 	  }
-	  if(!players[id].finished)
-	  {
-		  gEnd = false;
-	  }
 	  /*if(players[id].finished&&players[id].num==pTurn)
 	  {
 		  if(pTurn >= numPlayers)
@@ -266,7 +262,7 @@ setInterval(function() {
 	  gameStarted = true;
 	  io.sockets.emit('start');
   }
-  if(gameStarted && gEnd)
+  if(gameStarted && playersLeft == 0)
   {
 	  console.log("Game Over");
 	  io.sockets.emit('end', players);
