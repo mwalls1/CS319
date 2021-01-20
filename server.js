@@ -171,7 +171,7 @@ io.on('connection', function(socket) {
 			}
 			else
 				player.curSpot += spinVal;
-			console.log(player.name+"is at "+player.curSpot);
+			console.log(playersLeft);
 			var tempVal = player.name+" spun a "+spinVal;
 			io.sockets.emit('spinVal', tempVal);
 			if(board[player.curSpot].type == "major")
@@ -261,7 +261,6 @@ setInterval(function() {
 	  if(players[id].num==pTurn&&!players[id].finished)
 		  players[id].isTurn = true;*/
   }
-  console.log(gEnd);
   if(!gameStarted && ready && numPlayers > 0)
   {
 	  gameStarted = true;
@@ -269,6 +268,7 @@ setInterval(function() {
   }
   if(gameStarted && gEnd)
   {
+	  console.log("Game Over");
 	  io.sockets.emit('end', players);
 	  gameStarted = false;
 	  gEnd = false;
