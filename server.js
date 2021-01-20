@@ -150,6 +150,7 @@ io.on('connection', function(socket) {
 	{
 		if(!player.finished)
 		{
+			gameStarted = true;
 			player.hasSpun = true;
 			var spinVal = Math.floor((Math.random() * 4) + 1);
 			var gpaBoost = 0;
