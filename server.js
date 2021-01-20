@@ -167,11 +167,9 @@ io.on('connection', function(socket) {
 				player.finished = true;
 				playersLeft--;
 				player.curSpot = 48;
-				console.log(player.name+"has finished "+player.finished);
 			}
 			else
 				player.curSpot += spinVal;
-			console.log(playersLeft);
 			var tempVal = player.name+" spun a "+spinVal;
 			io.sockets.emit('spinVal', tempVal);
 			if(board[player.curSpot].type == "major")
@@ -262,6 +260,7 @@ setInterval(function() {
 	  gameStarted = true;
 	  io.sockets.emit('start');
   }
+  console.log("Game Started: +"gameStarted);
   if(gameStarted && playersLeft == 0)
   {
 	  console.log("Game Over");
