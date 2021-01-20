@@ -269,12 +269,10 @@ setInterval(function() {
 	  gameStarted = false;
 	  gEnd = false;
   }
-  if(numPlayers ==0)
+  if(numPlayers == 0)
   {
-	gameStarted = false;
-	gEnd = false;
+	  gameStarted = false;
   }
-  
 }, 100);
 server.listen(app.get('port'), function() {
   console.log('Starting server on port 5000');
