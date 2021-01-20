@@ -167,6 +167,7 @@ io.on('connection', function(socket) {
 				player.finished = true;
 				playersLeft--;
 				player.curSpot = 48;
+				console.log("Players left: "+ playersLeft);
 			}
 			else
 				player.curSpot += spinVal;
@@ -248,6 +249,7 @@ setInterval(function() {
 	  setTimeout(function(){},3000);
 	  gameStarted = true;
   }
+  console.log(gameStarted);
   if(gameStarted && playersLeft == 0)
   {
 	  console.log("Game Over");
