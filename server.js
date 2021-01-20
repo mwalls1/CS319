@@ -257,8 +257,9 @@ setInterval(function() {
   }
   if(!gameStarted && ready && numPlayers > 0)
   {
-	  gameStarted = true;
 	  io.sockets.emit('start');
+	  setTimeout('',3000);
+	  gameStarted = true;
   }
   console.log("Game Started: "+gameStarted);
   if(gameStarted && playersLeft == 0)
