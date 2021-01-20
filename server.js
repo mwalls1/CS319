@@ -241,27 +241,13 @@ setInterval(function() {
 	  {
 		  ready = false;
 	  }
-	  /*if(players[id].finished&&players[id].num==pTurn)
-	  {
-		  if(pTurn >= numPlayers)
-			{
-				pTurn = 1;
-			}
-			else
-			{
-				pTurn++;
-			}
-	  }
-	  if(players[id].num==pTurn&&!players[id].finished)
-		  players[id].isTurn = true;*/
   }
   if(!gameStarted && ready && numPlayers > 0)
   {
 	  io.sockets.emit('start');
-	  setTimeout('',3000);
+	  setTimeout(function(){},3000);
 	  gameStarted = true;
   }
-  console.log("Game Started: "+gameStarted);
   if(gameStarted && playersLeft == 0)
   {
 	  console.log("Game Over");
