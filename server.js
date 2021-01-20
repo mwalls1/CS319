@@ -260,7 +260,7 @@ setInterval(function() {
 	  gameStarted = true;
 	  io.sockets.emit('start');
   }
-  console.log("Game Started: +"gameStarted);
+  console.log("Game Started: "+gameStarted);
   if(gameStarted && playersLeft == 0)
   {
 	  console.log("Game Over");
