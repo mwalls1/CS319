@@ -8,9 +8,11 @@ var app = express();
 app.set('port', process.env.PORT || 5000);
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
-var gStart = true;
+var ready = true;
 var gEnd = true;
+var findNext = false;
 var gameStarted = false;
+var playersLeft = 0;
 app.use(express.static(__dirname));
 // Routing
 app.get('/', function(request, response) {
@@ -104,6 +106,7 @@ var players = {};
 io.on('connection', function(socket) {
   socket.on('new player', function(data) {
 	numPlayers++;
+	playersLeft++;
 	console.log('New player connected. Num Players:'+numPlayers);
 	var temp;
 	if(numPlayers==pTurn)
@@ -133,6 +136,8 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function() {
 	  if(numPlayers>0)
 		numPlayers--;
+	if(playersLeft>0)
+		playersLeft--;
 	  console.log('Player Disconnected. Num Players:'+numPlayers);
 	delete players[socket.id];
   });
@@ -160,7 +165,9 @@ io.on('connection', function(socket) {
 			if((player.curSpot + spinVal)>=48)
 			{
 				player.finished = true;
+				playersLeft--;
 				player.curSpot = 48;
+				console.log(player.name+"has finished "+player.finished);
 			}
 			else
 				player.curSpot += spinVal;
@@ -198,10 +205,26 @@ io.on('connection', function(socket) {
 			{
 				pTurn++;
 			}
-			for (var id in players) {
-				if(players[id].num == pTurn && !players[id].finished)
+			findNext = false;
+			while(!findNext && playersLeft > 0)
+			{
+				for (var id in players) {
+					if(players[id].num == pTurn && !players[id].finished)
+					{
+						players[id].isTurn = true;
+						findNext = true;
+					}
+				}
+				if(!findNext)
 				{
-					players[id].isTurn = true;
+					if(pTurn >= numPlayers)
+					{
+						pTurn = 1;
+					}
+					else
+					{
+						pTurn++;
+					}
 				}
 			}
 	    }
@@ -212,19 +235,19 @@ io.on('connection', function(socket) {
 setInterval(function() {
   io.sockets.emit('state', players);
   io.sockets.emit('list', players);
-  gStart = true;
+  ready = true;
   gEnd = true;
   for(var id in players)
   {
 	  if(!players[id].isReady)
 	  {
-		  gStart = false;
+		  ready = false;
 	  }
-	  if(players[id].finished == false)
+	  if(!players[id].finished)
 	  {
 		  gEnd = false;
 	  }
-	  if(players[id].finished&&players[id].num==pTurn)
+	  /*if(players[id].finished&&players[id].num==pTurn)
 	  {
 		  if(pTurn >= numPlayers)
 			{
@@ -236,18 +259,19 @@ setInterval(function() {
 			}
 	  }
 	  if(players[id].num==pTurn&&!players[id].finished)
-		  players[id].isTurn = true;
+		  players[id].isTurn = true;*/
   }
-  if(!gameStarted && gStart && numPlayers > 0)
+  console.log(gEnd);
+  if(!gameStarted && ready && numPlayers > 0)
   {
 	  gameStarted = true;
 	  io.sockets.emit('start');
   }
   if(gameStarted && gEnd)
   {
+	  io.sockets.emit('end', players);
 	  gameStarted = false;
 	  gEnd = false;
-	  io.sockets.emit('end', players);
   }
   if(numPlayers ==0)
   {
