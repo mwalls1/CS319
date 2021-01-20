@@ -243,7 +243,7 @@ setInterval(function() {
 	  gameStarted = true;
 	  io.sockets.emit('start');
   }
-  if(gameStarted && gEnd && numPlayers > 0)
+  if((gameStarted && gEnd) || numPlayers = 0)
   {
 	  gameStarted = false;
 	  io.sockets.emit('end', players);
